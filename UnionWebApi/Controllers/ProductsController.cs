@@ -23,6 +23,7 @@ namespace UnionWebApi.Controllers
             //var result = (from entry in cn.GetTable<DEPARTAMENTO>().AsEnumerable<DEPARTAMENTO>()
             //              select entry).ToList();
             //return Request.CreateResponse<List<DEPARTAMENTO>>(HttpStatusCode.OK, result);
+
             using (DataTable dt = Funciones.ExecuteDataTable("SELECT * FROM DEPARTAMENTO"))
             {
                 return new HttpResponseMessage()
