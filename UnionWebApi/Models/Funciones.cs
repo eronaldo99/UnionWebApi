@@ -1043,6 +1043,10 @@ namespace UnionWebApi.Models
             trigger.ControlID = pUniqueId;
             ((UpdatePanel)pMaster.FindControl("UpdatePanelContent")).Triggers.Add(trigger);
         }
+        public static string PrimeraLetraMayuscula(string pText)
+        {
+            return pText[0].ToString().ToUpper() + pText.Substring(1).ToLower();
+        }
 
         public static string NumeroALetras(double value)
         {

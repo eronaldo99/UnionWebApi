@@ -16,22 +16,34 @@ namespace UnionWebApi.Controllers
 {
     public class ProductsController : ApiController
     {
-        // api/products
-        public HttpResponseMessage GetAllProducts()
+        Product[] products = new Product[]
         {
-            //DataClassesDataContext cn = new DataClassesDataContext();
-            //var result = (from entry in cn.GetTable<DEPARTAMENTO>().AsEnumerable<DEPARTAMENTO>()
-            //              select entry).ToList();
-            //return Request.CreateResponse<List<DEPARTAMENTO>>(HttpStatusCode.OK, result);
+            new Product { Id = 1, Name = "Tomato Soup", Category = "Groceries", Price = 1 },
+            new Product { Id = 2, Name = "Yo-yo", Category = "Toys", Price = 3 },
+            new Product { Id = 3, Name = "Hammer", Category = "Hardware", Price = 16 }
+        };
 
-            using (DataTable dt = Funciones.ExecuteDataTable("SELECT * FROM DEPARTAMENTO"))
-            {
-                return new HttpResponseMessage()
-                {
-                    Content = new StringContent(JsonConvert.SerializeObject(dt), System.Text.Encoding.UTF8, "application/json")
-                };
-            }
+        public IEnumerable<Product> GetAllProducts()
+        {
+            return products;
         }
+
+        // api/products
+        //public HttpResponseMessage GetAllProductss()
+        //{
+        //    //DataClassesDataContext cn = new DataClassesDataContext();
+        //    //var result = (from entry in cn.GetTable<DEPARTAMENTO>().AsEnumerable<DEPARTAMENTO>()
+        //    //              select entry).ToList();
+        //    //return Request.CreateResponse<List<DEPARTAMENTO>>(HttpStatusCode.OK, result);
+
+        //    using (DataTable dt = Funciones.ExecuteDataTable("SELECT * FROM DEPARTAMENTO"))
+        //    {
+        //        return new HttpResponseMessage()
+        //        {
+        //            Content = new StringContent(JsonConvert.SerializeObject(dt), System.Text.Encoding.UTF8, "application/json")
+        //        };
+        //    }
+        //}
 
         // api/products
         public HttpResponseMessage PostProductList(Dictionary<string, List<cEntidadSync>> pDictionary)
